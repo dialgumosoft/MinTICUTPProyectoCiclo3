@@ -51,7 +51,7 @@
                     <div class="card h-100">
                         <img src="https://storage.googleapis.com/mmc-cdn-bucket/uploads/2019/07/39aead52-frutas.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Fresas</h5>
+                            <h5 class="card-title">Frutas</h5>
                             <p class="card-text">Producto 100% cultivado en el campo Colombiano</p>
                             <button type="button" class="btn btn-primary">Detalles</button>
                         </div>
@@ -107,7 +107,7 @@
 
 <script>
 export default {
-    name: "Home"
+    name: "home"
 }
 </script>
 

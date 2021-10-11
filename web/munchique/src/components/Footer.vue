@@ -14,11 +14,13 @@ export default {
 <style>
 .footer {
   height: 70px;
+  width: 100%;
   background: black;
   font-size: 14px;
   color: white;
   text-align: center;
   margin-bottom: 25px;
   margin: auto;
+  bottom: 0;
 }
 </style>
