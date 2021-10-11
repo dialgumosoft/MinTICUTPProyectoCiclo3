@@ -4,8 +4,10 @@ const router = Router();
 import * as usersCtrl from "../controllers/user.controller";
 import { authJwt, verifySignup } from "../middlewares";
 
+router.get("/", [authJwt.verifyToken, authJwt.isModeratorOrAdmin], usersCtrl.getUsers);
+
 router.post(
-  "/users",
+  "/",
   [
     authJwt.verifyToken,
     authJwt.isAdmin,

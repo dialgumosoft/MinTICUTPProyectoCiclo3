@@ -4,7 +4,11 @@ const router = Router();
 import * as productsCtrl from "../controllers/products.controller";
 import { authJwt } from "../middlewares";
 
-router.get("/", productsCtrl.getProducts);
+router.get(
+  "/",
+  [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
+  productsCtrl.getProducts
+);
 
 router.get("/:productId", productsCtrl.getProductById);
 
@@ -16,7 +20,7 @@ router.post(
 
 router.put(
   "/:productId",
-  [authJwt.verifyToken, authJwt.isModerator],
+  [authJwt.verifyToken, authJwt.isModerator, authJwt.isAdmin],
   productsCtrl.updateProductById
 );
 
