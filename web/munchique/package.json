@@ -8,7 +8,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^0.22.0",
     "bootstrap": "^5.1.2",
     "bootstrap-vue": "^2.21.2",
@@ -17,15 +16,6 @@
     "vue-axios": "^3.3.7",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
-=======
-    "core-js": "^3.18.2",
-    "express": "^4.17.1",
-    "sass-loader": "^10.2.0",
-    "serve-static": "^1.14.1",
-    "vue": "^2.6.14",
-    "vue-router": "^3.5.2",
-    "vuex": "^3.6.2"
->>>>>>> 32cd4e4203eaba2177b58d8675962a383c78fe16
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.13",

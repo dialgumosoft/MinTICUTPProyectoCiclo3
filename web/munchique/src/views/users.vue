@@ -19,6 +19,16 @@
           <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" v-model="usuario.nombre">
         </div>
 
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label">Apellidos *</label>
+          <input type="text" class="form-control" id="validationDefault02"  placeholder="Apellidos" required>
+        </div>
+      
+        <div class="col-md-4">
+          <label for="validationDefault03" class="form-label">Identificación *</label>
+          <input type="text" class="form-control" id="validationDefault03" placeholder="N° Identificación" required>
+        </div>
+
         <!-- se cambio la pabra Usuario por correo -->
         <div class="col-md-4">
           <label for="validationDefaultUsername" class="form-label">Correo *</label>
@@ -32,6 +42,27 @@
           <label for="validationDefault05" class="form-label">Contraseña *</label>
           <input type="Password" class="form-control" id="validationDefault05" placeholder="Contraseña" v-model="usuario.contraseña">
         </div>
+
+        <div class="col-md-3">
+          <label for="validationDefault03" class="form-label">Telefono *</label>
+          <input type="text" class="form-control" id="validationDefault03" placeholder="Telefono" required>
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationDefault04" class="form-label">Departamento *</label>
+        <select class="form-select" id="validationDefault04" required>
+          <option selected disabled value="">Seleccione...</option>
+          <option>...</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationDefault04" class="form-label">Ciudad *</label>
+        <select class="form-select" id="validationDefault04" required>
+          <option selected disabled value="">Seleccione...</option>
+          <option>...</option>
+        </select>
+      </div>
 
         <div class="col-12">
           <div class="form-check">
@@ -88,7 +119,7 @@
 
         registrarUsuario(){
 
-          axios.post("https://api-proyecto-ciclo3.herokuapp.com/", this.usuario)
+          this.axios.post("https://api-proyecto-ciclo3.herokuapp.com/", this.usuario)
           .then(res=>{
             
             this.usuarios.push(res.data)

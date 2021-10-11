@@ -13,7 +13,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
 //URL BASE
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'https://api-proyecto-ciclo3.herokuapp.com/api';
 
 
 Vue.config.productionTip = false
