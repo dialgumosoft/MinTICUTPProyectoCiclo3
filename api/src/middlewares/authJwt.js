@@ -4,7 +4,7 @@ import User from "../models/User";
 import Role from "../models/Role";
 
 export const verifyToken = async (req, res, next) => {
-  let token = req.headers["x-access-token"];
+  let token = req.headers["token"];
 
   if (!token) return res.status(403).json({ message: "No token provided" });
 
@@ -35,7 +35,7 @@ export const isModerator = async (req, res, next) => {
 
     return res.status(403).json({ message: "Require Moderator Role!" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).send({ message: error });
   }
 };
@@ -54,7 +54,28 @@ export const isAdmin = async (req, res, next) => {
 
     return res.status(403).json({ message: "Require Admin Role!" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return res.status(500).send({ message: error });
+  }
+};
+
+export const isModeratorOrAdmin = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+    const roles = await Role.find({ _id: { $in: user.roles } });
+
+    for (let i = 0; i < roles.length; i++) {
+      if (["admin", "moderator"].includes(roles[i].name)) {
+        next();
+        return;
+      }
+    }
+
+    return res
+      .status(403)
+      .json({ message: "Require Moderator or Admin Role!" });
+  } catch (error) {
+    console.log(error);
     return res.status(500).send({ message: error });
   }
 };
