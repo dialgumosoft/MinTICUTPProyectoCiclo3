@@ -6,7 +6,6 @@
           
           <form action="" method="" class="row g-3" @submit.prevent="login">
             <img src="../../public/Logo-Munchique.png" alt="" />
-
             <div class="col-12">
               <label>Email</label>
               <input
@@ -41,30 +40,30 @@
                 >
               </div>
             </div>
-
+              
             <div class="col-12">
               <button type="submit" class="btn btn-dark float-end">
                 <p>LOGIN</p>
               </button>
             </div>
           </form>
-
+          
           <hr class="mt-4" />
           <div class="col-12">
             <p class="text-center mb-0">
               No tienes una cuenta?<a href="/users">Registrate!</a>
             </p>
           </div>
+         {{token}}
         </div>
       </div>
     </div>
   </div>
-
+  
   <!-- Bootstrap JS -->
 </template>
 
 <script>
-
 export default {
   name: "Login",
   data: () => ({
@@ -73,44 +72,21 @@ export default {
       password: "",
     },
   }),
-  // created() {
-  //   const datos = {
-  //     email: "admin@localhost",
-  //     password: "admin",
-  //   };
-  //   axios.post("https://api-proyecto-ciclo3.herokuapp.com/api/auth/signin", datos)
-  //   .then((result) => {
-  //       console.log(result);
-  //     });
-  // },
-
-  // headers: {
-  //   Accept: "application/json",
-  //   // 'Content-Type': 'application/x-www-form-urlencoded',
-  // },
 
   methods: {
     login() {
-
-  //  const datos = {
-  //    email: "admin@localhost",
-  //    password: "admin",
-  //  };
-
       this.axios.post("/auth/signin", this.datos).then((res) => {
-      this.axios.defaults.headers.common['Autorization'] = 'Bearer' + res;
-      this.$router.push ("/")
-        
+        this.jwtToken = res.data.token
+        localStorage.setItem('token', res.data.token)
+        this.$router.push ("/")
         console.log(res.data.token);
        });
-
-       //console.log("enviando login...", this.datos)
    },
   }
 };
 </script>
 
-<style lang="scss">
+<style>
 label {
   display: block;
   text-align: left;
