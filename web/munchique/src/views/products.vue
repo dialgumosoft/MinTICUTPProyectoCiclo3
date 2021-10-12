@@ -99,6 +99,7 @@ export default {
 
   methods: {
       products(){
+        let token = localStorage.getItem('token')
         this.axios.post ('https://api-proyecto-ciclo3.herokuapp.com/api/products')
         .then(res=> {console.log(res)})
 
@@ -106,10 +107,6 @@ export default {
     }
 
   }
-
-
-
-
 
   
 </script>

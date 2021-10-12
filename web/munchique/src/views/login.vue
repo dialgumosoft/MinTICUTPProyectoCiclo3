@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import store, { jwtToken } from '../store/index.js'
 export default {
   name: "Login",
   data: () => ({
@@ -74,10 +75,12 @@ export default {
   }),
 
   methods: {
+    
     login() {
       this.axios.post("/auth/signin", this.datos).then((res) => {
         this.jwtToken = res.data.token
-        localStorage.setItem('token', res.data.token)
+        store.dispatch('setToken', this.jwtToken)
+        //localStorage.setItem('token', res.data.token)
         this.$router.push ("/")
         console.log(res.data.token);
        });
