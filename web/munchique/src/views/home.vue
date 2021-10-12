@@ -107,7 +107,17 @@
 
 <script>
 export default {
-    name: "home"
+    name: "home",
+
+    async mounted(){
+        await this.axios.get("/home")
+
+    },
+    data(){
+        return{
+            home: []
+        }
+    }
 }
 </script>
 

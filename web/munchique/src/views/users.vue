@@ -19,7 +19,7 @@
           <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" v-model="usuario.nombre">
         </div>
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <label for="validationDefault02" class="form-label">Apellidos *</label>
           <input type="text" class="form-control" id="validationDefault02"  placeholder="Apellidos" required>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-md-4">
           <label for="validationDefault03" class="form-label">Identificación *</label>
           <input type="text" class="form-control" id="validationDefault03" placeholder="N° Identificación" required>
-        </div>
+        </div> -->
 
         <!-- se cambio la pabra Usuario por correo -->
         <div class="col-md-4">
@@ -43,7 +43,7 @@
           <input type="Password" class="form-control" id="validationDefault05" placeholder="Contraseña" v-model="usuario.contraseña">
         </div>
 
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <label for="validationDefault03" class="form-label">Telefono *</label>
           <input type="text" class="form-control" id="validationDefault03" placeholder="Telefono" required>
       </div>
@@ -62,7 +62,7 @@
           <option selected disabled value="">Seleccione...</option>
           <option>...</option>
         </select>
-      </div>
+      </div> -->
 
         <div class="col-12">
           <div class="form-check">
@@ -111,7 +111,7 @@
 
       methods: {
         listadoUsuarios(){
-          this.axios.get('https://api-proyecto-ciclo3.herokuapp.com/')
+          this.axios.get('https://api-proyecto-ciclo3.herokuapp.com/api/users')
           .then(res=>{
             this.listadoUsuarios=res.data;
           })

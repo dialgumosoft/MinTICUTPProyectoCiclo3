@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-md-4 offset-md-4">
         <div class="login-form bg-Ligth mt-4 p-4">
+          
           <form action="" method="" class="row g-3" @submit.prevent="login">
             <img src="../../public/Logo-Munchique.png" alt="" />
 
@@ -63,43 +64,49 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
   name: "Login",
   data: () => ({
-    usuario: {},
     datos: {
-      email: "admin@localhost",
-      password: "admin",
+      email: "",
+      password: "",
     },
   }),
-  created() {
-    const datos = {
-      email: "admin@localhost",
-      password: "admin",
-    };
-    axios
-      .post("https://api-proyecto-ciclo3.herokuapp.com/api/auth/signin", datos)
-      .then((result) => {
-        console.log(result);
-      });
-  },
+  // created() {
+  //   const datos = {
+  //     email: "admin@localhost",
+  //     password: "admin",
+  //   };
+  //   axios.post("https://api-proyecto-ciclo3.herokuapp.com/api/auth/signin", datos)
+  //   .then((result) => {
+  //       console.log(result);
+  //     });
+  // },
 
   // headers: {
   //   Accept: "application/json",
   //   // 'Content-Type': 'application/x-www-form-urlencoded',
   // },
 
-  // methods: {
-  //   login() {
-  //     this.axios.post("/auth/signin", data.datos).then((res) => {
-  //       console.log(res);
-  //     });
+  methods: {
+    login() {
 
-  //     //console.log("enviando login...", this.datos)
-  //   },
-  // },
+  //  const datos = {
+  //    email: "admin@localhost",
+  //    password: "admin",
+  //  };
+
+      this.axios.post("/auth/signin", this.datos).then((res) => {
+      this.axios.defaults.headers.common['Autorization'] = 'Bearer' + res;
+      this.$router.push ("/")
+        
+        console.log(res.data.token);
+       });
+
+       //console.log("enviando login...", this.datos)
+   },
+  }
 };
 </script>
 

@@ -5,12 +5,12 @@
             <label><center><strong>REGISTRO DE PRODUCTOS</strong></center></label>
           </div>
 
-          <div class="alert alert-secondary" role="alert">
+          <!-- <div class="alert alert-secondary" role="alert">
             <label><strong>DATOS DEL COMERCIANTE</strong></label>
-          </div>
+          </div> -->
 
         <form class="row g-3">
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <label for="validationDefault01" class="form-label">Nombres *</label>
                   <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" required>
                 </div>
@@ -46,7 +46,7 @@
                 <label><strong>DATOS DEL PRODUCTO</strong></label>
               </div>
               
-              <br>
+              <br> -->
 
               <div class="col-md-4">
                   <label for="validationDefault01" class="form-label">Nombre Del Producto *</label>
@@ -68,13 +68,13 @@
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <label for="validationDefault01" class="form-label">Detalle Del Producto *</label>
                 <div class="input-group">
                   <span class="input-group-text">Detalle del Producto</span>
                 <textarea class="form-control" aria-label="With textarea" required></textarea>
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-6">
                 <div class="mb-3">
@@ -98,7 +98,7 @@ export default {
 
   methods: {
       products(){
-        this.axios.post ('https://api-proyecto-ciclo3.herokuapp.com/')
+        this.axios.post ('https://api-proyecto-ciclo3.herokuapp.com/api/products')
         .then(res=> {console.log(res)})
 
       }
