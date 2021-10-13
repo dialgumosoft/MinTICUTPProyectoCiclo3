@@ -99,9 +99,12 @@ export default {
 
   methods: {
       products(){
+        this.axios.post ('/api/products', token).then(res=> {
+          
+        console.log(res)})
         let token = localStorage.getItem('token')
-        this.axios.post ('https://api-proyecto-ciclo3.herokuapp.com/api/products')
-        .then(res=> {console.log(res)})
+        
+        
 
       }
     }
