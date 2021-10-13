@@ -140,6 +140,10 @@ export default {
 .contenido{
     width: 100%;
 }
+
+.contenido .row{
+    width: 90%;
+}
 .carouselExampleCaptions img{
     width: 90%;
     height: 100px;
@@ -148,7 +152,7 @@ export default {
 }
 .row img{
     width: 100%;
-    height: 100px;
+    height: 90;
 }
 
 .pagination{

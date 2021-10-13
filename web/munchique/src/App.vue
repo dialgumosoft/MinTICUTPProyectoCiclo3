@@ -16,6 +16,8 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import products from './views/products';
 import users from './views/users';
+import productos from './views/productos';
+import admin from './views/admin';
 
 Vue.use(VueRouter);
 

@@ -20,11 +20,12 @@
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link" href="/productos">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/products">Productos</a>
+                            <a class="nav-link" href="/login">Login</a>
                         </li>
+                        
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscador">

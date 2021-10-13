@@ -13,7 +13,7 @@
         {{mensaje.texto}}
       </b-alert>
 
-      <form class="row g-3" @submit ="registrarUsuario()">
+      <form class="row g-3" @submit="registrarUsuario">
         <div class="col-md-4">
           <label for="validationDefault01" class="form-label">Nombres *</label>
           <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" v-model="usuario.nombre">
@@ -92,11 +92,9 @@
 
 <script>
   export default {
-
     data(){
           return{
             usuarios:[], 
-
             mensaje: {color: 'success', texto: ''},
             dismissSecs: 5,
             dismissCountDown: 0,
@@ -111,24 +109,31 @@
 
       methods: {
         listadoUsuarios(){
-          this.axios.get('https://api-proyecto-ciclo3.herokuapp.com/api/users')
-          .then(res=>{
-            this.listadoUsuarios=res.data;
+          this.axios.get('/api/users', token).then(res=>{
+            //this.jwtToken = res.data.token
+            //store.dispatch('setToken', this.jwtToken)
+            //let token = localStorage.getItem('token')
+            localStorage.setItem('token', res.data.token)
+            this.listadoUsuarios=res.data.usuario;
           })
         },
 
         registrarUsuario(){
-
-          this.axios.post("https://api-proyecto-ciclo3.herokuapp.com/", this.usuario)
-          .then(res=>{
+          this.axios.post("/api/users", token).then(res=>{
+          // this.jwtToken = res.data.token
+          // let token = localStorage.getItem('token')
+          // store.dispatch('setToken', this.jwtToken)
+          localStorage.setItem('token', res.data.token)
             
-            this.usuarios.push(res.data)
-            this.usuarios.nombre = "";
-            this.usuarios.correo = "";
-            this.usuarios.contraseña = "";
+            this.usuarios.push(res.data.usuario)
+            this.usuario.nombre = "";
+            this.usuario.correo = "";
+            this.usuario.contraseña = "";
             this.mensaje.color="success";
             this.mensaje.texto="Usuario Registrado";
             this.showAlert();
+
+            console.log(token)
 
 
           })
