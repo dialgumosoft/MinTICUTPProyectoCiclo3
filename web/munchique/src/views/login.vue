@@ -52,7 +52,6 @@
           <div class="col-12">
             <p class="text-center mb-0">
               No tienes una cuenta?<a href="/users">Registrate!</a>
-              {{this.jwtToken}}
             </p>
           </div>
          {{token}}
@@ -78,9 +77,9 @@ export default {
   methods: {
     login() {
       this.axios.post("/auth/signin", this.datos).then((res) => {
-        //this.jwtToken = res.data.token
-        //store.dispatch('setToken', this.jwtToken)
-        //localStorage.setItem('token', res.data.token)
+        this.jwtToken = res.data.token
+        store.dispatch('setToken', this.jwtToken)
+        localStorage.setItem('token', res.data.token)
         this.$router.push ("/admin")
         console.log(res.data.token);
        });
