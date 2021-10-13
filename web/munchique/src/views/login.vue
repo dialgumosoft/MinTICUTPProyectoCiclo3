@@ -77,8 +77,8 @@ export default {
   methods: {
     login() {
       this.axios.post("/auth/signin", this.datos).then((res) => {
-        this.jwtToken = res.data.token
-        store.dispatch('setToken', this.jwtToken)
+        // this.jwtToken = res.data.token
+        // store.dispatch('setToken', this.jwtToken)
         localStorage.setItem('token', res.data.token)
         this.$router.push ("/admin")
         console.log(res.data.token);
