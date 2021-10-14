@@ -1,22 +1,23 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const jwtToken = new Vuex.Store({
   state: {
-    token: ""
+    token: "",
   },
 
-  mutations:{
-    setToken(state, payload){
-      state.token = payload
-    }
+  mutations: {
+    setToken(state, payload) {
+      state.token = payload;
+    },
   },
-  actions:{
-    setToken({commit}, token){commit('setToken', token)}
+  actions: {
+    setToken({ commit }, token) {
+      commit("setToken", token);
+    },
+  },
+});
 
-  }
-})
-
-export default jwtToken
+export default jwtToken;
