@@ -1,14 +1,15 @@
 <template>
-<div class="container">
 
+<div class="container">
     <div class="col-md-8 offset-md-2">
         <div class="d-flex align-items-center p-3 my-3 text-black bg-purple rounded shadow-sm">
     <img class="me-3" src="../../public/Logo-Munchique.png" alt="" width="98" height="38">
     
-      <label><center><strong>ADMINISTRADOR</strong></center></label>
+      <label><center><strong>LISTADO DE PRODUCTOS</strong></center></label>
       <div class="col-auto me-auto">
         <button type="button" class="btn btn-danger" @click="cerrarSesion()">Cerrar Sesion</button>
     </div>
+      <!--small>Since 2011</small-->
 
   </div>
   <br>
@@ -17,9 +18,6 @@
       <div class="row">
     <div class="col-auto me-auto">
         <button type="button" class="btn btn-success" onclick="location.href='/products'">Registrar Productos</button>
-    </div>
-    <div class="col-auto me-auto">
-        <button type="button" class="btn btn-success" onclick="location.href='/listproduct'">Listado Productos</button>
     </div>
     <div class="col-auto">
         <button type="button" class="btn btn-success" onclick="location.href='/users'">Registrar Usuarios</button>
@@ -35,16 +33,18 @@
       <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Correo</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Precio</th>
       <th scope="col">Opciones</th>
     </tr>
     
   </thead>
   <tbody>
-    <tr v-for="(user, index) in users" :key="index">
+    <tr v-for="(product, index) in products" :key="index">
       <th scope="row">{{index+1}}</th>
-      <td>{{user.username}}</td>
-      <td>{{user.email}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.category}}</td>
+      <td>{{product.price}}</td>
       <td>
         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <button type="button" class="btn btn-success">Editar</button>
@@ -69,9 +69,6 @@
 </table>
 <br>
 <br>
-<br>
-<br>
-<br>
 </div>
 </div>
 
@@ -84,7 +81,7 @@ import axios from 'axios';
 export default{
   data() {
     return {
-      users: []
+      products: []
   }
   },
   
@@ -92,13 +89,13 @@ export default{
     const config={
       headers: { token: localStorage.getItem('token')}
     };
-   axios.get("/users", config)
+   axios.get("/products", config)
     .then(response =>{
       //this.jwtToken = response.data.token
       //store.dispatch('setToken', this.jwtToken)
       //localStorage.setItem('token', response.data.token)
       
-      this.users = response.data;
+      this.products = response.data;
       //console.log(response.data);
     })
     
